@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Inherit Sale Order Form -->
+    <record id="view_sale_order_form_inherit_gas" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.gas</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="is_lpg"/>
+                <field name="driver_name"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="lpg_quantity"/>
+                <field name="lpg_type" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
+                <field name="vehicle_id"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Gas Tracking">
+                    <field name="gas_tracking_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="product_id"/>
+                            <field name="status"/>
+                            <field name="location_id"/>
+                            <field name="delivery_date"/>
+                            <field name="return_date"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="sale_order_id"/>
+                                    <field name="product_id"/>
+                                    <field name="status"/>
+                                    <field name="location_id"/>
+                                    <field name="delivery_date"/>
+                                    <field name="return_date"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+    <menuitem id="gas_tracking_menu_root" name="LPG Gas Tracking" sequence="1"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="product_menu_categ" name="Product" parent="gas_tracking_menu_root" sequence="1"/>
+    <menuitem id="staff_menu_categ" name="Staff" parent="gas_tracking_menu_root" sequence="2"/>
+    <menuitem id="store_menu_categ" name="Store" parent="gas_tracking_menu_root" sequence="3"/>
+    <menuitem id="transaction_menu_categ" name="Transaction" parent="gas_tracking_menu_root" sequence="4"/>
+</odoo>
+

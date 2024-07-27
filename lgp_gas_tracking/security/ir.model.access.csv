@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lgp_gas_tracking_lgp_gas_tracking,lgp_gas_tracking.lgp_gas_tracking,model_gas_tracking,,1,1,1,1

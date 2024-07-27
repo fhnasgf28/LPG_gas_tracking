@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form view modification for hr.employee -->
+        <record id="view_employee_form_inherit_cylinders" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit.cylinders</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Responsible Cylinders" name="responsible_cylinders">
+                        <field name="responsible_for_cylinders">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="serial_number"/>
+                                <field name="state"/>
+                                <!-- Add other fields from gas.cylinder model if needed -->
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Tree view modification for hr.employee -->
+        <record id="view_employee_tree_inherit_cylinders" model="ir.ui.view">
+            <field name="name">hr.employee.tree.inherit.cylinders</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <field name="responsible_for_cylinders"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- gas.cylinder action window -->
+        <record id="gas_staff_action" model="ir.actions.act_window">
+            <field name="name">Staff List</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="gas_staff_menu_act" name="Staff List" parent="staff_menu_categ" action="gas_staff_action" sequence="1"/>
+    </data>
+</odoo>
+
