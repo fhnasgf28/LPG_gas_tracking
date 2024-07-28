@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_lpg_config_config_form" model="ir.ui.view">
+        <field name="name">gas.lpg.config.form</field>
+        <field name="model">gas.lpg.config</field>
+        <field name="arch" type="xml">
+            <form string="Gas Lpg Configuration">
+                <group>
+                    <field name="product_id"/>
+                    <field name="available_stock"/>
+                    <field name="status"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_lpg_config_tree" model="ir.ui.view">
+        <field name="name">gas.lpg.config.tree</field>
+        <field name="model">gas.lpg.config</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Order Configuration">
+                <field name="product_id"/>
+                <field name="available_stock"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_lpg_config" model="ir.actions.act_window">
+        <field name="name">Gas LPG Configuration</field>
+        <field name="res_model">gas.lpg.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new sale order configuration.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_lpg_config" name="Gas Lpg Configurations" parent="sale.menu_sale_config" action="action_lpg_config"/>
+</odoo>
