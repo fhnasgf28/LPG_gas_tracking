@@ -8,15 +8,16 @@
         <field name="arch" type="xml">
              <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="is_lpg"/>
-                <field name="driver_name"/>
+                <field name="driver_name" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
+                <field name="nama_toko" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
             </xpath>
             <xpath expr="//field[@name='payment_term_id']" position="after">
-                <field name="lpg_quantity"/>
+                <field name="lpg_quantity" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
                 <field name="lpg_type" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
-                <field name="vehicle_id"/>
+                <field name="vehicle_id" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page string="Gas Tracking">
+                <page string="Gas Tracking" attrs="{'invisible': [('is_lpg', '=', False)]}">
                     <field name="gas_tracking_ids">
                         <tree>
                             <field name="name"/>
@@ -44,4 +45,12 @@
             </xpath>
         </field>
     </record>
+    <!--action Gas order-->
+        <record id="action_gas_order" model="ir.actions.act_window">
+            <field name="name">Gas Orders</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('is_lpg', '=', True)]</field>
+            <field name="context">{'default_is_lpg': True}</field>
+        </record>
 </odoo>

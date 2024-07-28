@@ -1,4 +1,4 @@
-# from . import hr_employee
+from . import hr_employee
 from . import product
 from . import sale_order
 from . import res_partner

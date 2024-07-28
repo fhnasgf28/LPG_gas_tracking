@@ -16,3 +16,5 @@ class LpgProduct(models.Model):
         ('in_use', 'In Use'),
         ('empty', 'Empty'),
     ], string='Status', default='available')
+    arrival_date = fields.Date(string='Arrival Date')
+    nama_toko= fields.Char(related="customer_id.nama_toko", string='Nama Toko')

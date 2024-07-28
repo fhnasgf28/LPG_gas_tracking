@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_gas_tracking_tree" model="ir.ui.view">
+        <field name="name">gas.tracking.tree</field>
+        <field name="model">gas.tracking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="sale_order_id"/>
+                <field name="product_id"/>
+                <field name="status"/>
+                <field name="location_id"/>
+                <field name="delivery_date"/>
+                <field name="return_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_gas_tracking_form" model="ir.ui.view">
+        <field name="name">gas.tracking.form</field>
+        <field name="model">gas.tracking</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sale_order_id"/>
+                        <field name="product_id"/>
+                        <field name="status"/>
+                        <field name="location_id"/>
+                        <field name="delivery_date"/>
+                        <field name="return_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    action booking order config-->
+    <record id="action_gas_tracking" model="ir.actions.act_window">
+        <field name="name">Gas Tracking</field>
+        <field name="res_model">gas.tracking</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

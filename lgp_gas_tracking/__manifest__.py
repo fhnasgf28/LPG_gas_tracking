@@ -25,11 +25,14 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/menus.xml',
         # 'views/hr_employee_views.xml',
+        'data/ir_sequence.xml',
         'views/product_views.xml',
-        # 'views/res_partner_views.xml',
+        'views/res_partner_views.xml',
         'views/sale_order_views.xml',
+        'views/gas_tracking_views.xml',
+        'views/fleet_vehicle_views.xml',
+        'views/menus.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

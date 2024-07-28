@@ -14,7 +14,6 @@
                                 <field name="name"/>
                                 <field name="serial_number"/>
                                 <field name="state"/>
-                                <!-- Add other fields from gas.cylinder model if needed -->
                             </tree>
                         </field>
                     </page>

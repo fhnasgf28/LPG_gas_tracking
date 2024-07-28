@@ -8,10 +8,19 @@
             <xpath expr="//field[@name='default_code']" position="attributes">
                 <attribute name="string">Serial Number</attribute>
             </xpath>
+            <xpath expr="//field[@name='detailed_type']" position="after">
+                <field name="customer_id"/>
+                <field name="nama_toko"/>
+            </xpath>
             <xpath expr="//sheet" position="inside">
                 <group string="Gas Cylinder Information">
-                    <field name="state"/>
-                    <field name="last_refill_date"/>
+                    <group>
+                        <field name="state"/>
+                        <field name="last_refill_date"/>
+                    </group>
+                    <group>
+                        <field name="arrival_date"/>
+                    </group>
                 </group>
             </xpath>
         </field>
