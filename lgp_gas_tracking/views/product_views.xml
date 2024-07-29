@@ -11,11 +11,11 @@
             <xpath expr="//field[@name='detailed_type']" position="after">
                 <field name="customer_id"/>
                 <field name="nama_toko"/>
+<!--                <field name="stock_available"/>-->
             </xpath>
             <xpath expr="//sheet" position="inside">
                 <group string="Gas Cylinder Information">
                     <group>
-                        <field name="state"/>
                         <field name="last_refill_date"/>
                     </group>
                     <group>
