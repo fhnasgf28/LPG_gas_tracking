@@ -17,6 +17,8 @@ class SaleOrder(models.Model):
     gas_tracking_ids = fields.One2many('gas.tracking', 'sale_order_id', string='Gas Tracking Records')
     product_id = fields.Many2one('product.template', string='Gas Product')
     nama_toko = fields.Char(related="partner_id.nama_toko", string='Nama Toko')
+    refill_date = fields.Datetime(related='order_line.product_id.refill_date', string='Refill Date', readonly=True)
+    return_date = fields.Datetime(related='order_line.product_id.return_date', string='Return Date', readonly=True)
 
     @api.model
     def create(self, vals):

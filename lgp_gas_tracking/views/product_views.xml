@@ -17,9 +17,11 @@
                 <group string="Gas Cylinder Information">
                     <group>
                         <field name="last_refill_date"/>
+                        <field name="refill_date"/>
                     </group>
                     <group>
                         <field name="arrival_date"/>
+                        <field name="return_date"/>
                     </group>
                 </group>
             </xpath>

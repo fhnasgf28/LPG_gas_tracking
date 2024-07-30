@@ -10,6 +10,8 @@
                 <field name="is_lpg"/>
                 <field name="driver_name" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
                 <field name="nama_toko" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
+                <field name="refill_date" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
+                <field name="return_date" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
             </xpath>
             <xpath expr="//field[@name='payment_term_id']" position="after">
                 <field name="lpg_quantity" attrs="{'invisible': [('is_lpg', '=', False)]}"/>
