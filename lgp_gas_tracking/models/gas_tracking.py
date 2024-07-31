@@ -5,10 +5,9 @@ class GasTracking(models.Model):
     _name = 'gas.tracking'
     _description = 'Gas Tracking'
 
-    name = fields.Char(string='Tracking Number', required=True, copy=False, readonly=True, index=True,
-                       default=lambda self: self.env['ir.sequence'].next_by_code('gas.tracking'))
+    product_code = fields.Char(related='product_id.default_code', string='Tracking Number', copy=False, readonly=True, index=True)
     sale_order_id = fields.Many2one('sale.order', string='Sale Order', required=True)
-    product_id = fields.Many2one('product.template', string='Gas Product', related='sale_order_id.product_id')
+    product_id = fields.Many2one('product.template', string='Gas Product')
     status = fields.Selection([
         ('available', 'Available'),
         ('delivered', 'Delivered'),

@@ -32,6 +32,7 @@
         'views/sale_order_views.xml',
         'views/gas_tracking_views.xml',
         'views/gas_tracking_config_views.xml',
+        'views/gas_transaction_views.xml',
         'views/fleet_vehicle_views.xml',
         'views/menus.xml',
     ],

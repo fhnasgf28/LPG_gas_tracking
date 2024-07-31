@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_lgp_gas_tracking_lgp_gas_tracking,lgp_gas_tracking.lgp_gas_tracking,model_gas_tracking,,1,1,1,1
 access_lpg_config_tracking,gas_lpg_config_tracking.gas_lpg_config_tracking,model_gas_lpg_config,,1,1,1,1
+access_template_purchase_order_gas,report.purchase_order_gas,model_gas_transaction,,1,1,1,1

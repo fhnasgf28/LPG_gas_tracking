@@ -12,5 +12,12 @@
               sequence="6"
               action="action_gas_order"
         />
+
+    <menuitem id="menu_gas_transaction_inherit"
+              name="Gas Transaction"
+              parent="sale.sale_order_menu"
+              sequence="7"
+              action="gas_transaction_action"
+        />
 </odoo>
 

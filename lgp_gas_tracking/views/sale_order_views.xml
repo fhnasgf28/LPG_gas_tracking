@@ -21,27 +21,14 @@
             <xpath expr="//notebook" position="inside">
                 <page string="Gas Tracking" attrs="{'invisible': [('is_lpg', '=', False)]}">
                     <field name="gas_tracking_ids">
-                        <tree>
-                            <field name="name"/>
+                        <tree editable="bottom">
+                            <field name="product_code"/>
                             <field name="product_id"/>
                             <field name="status"/>
                             <field name="location_id"/>
                             <field name="delivery_date"/>
                             <field name="return_date"/>
                         </tree>
-                        <form>
-                            <sheet>
-                                <group>
-                                    <field name="name"/>
-                                    <field name="sale_order_id"/>
-                                    <field name="product_id"/>
-                                    <field name="status"/>
-                                    <field name="location_id"/>
-                                    <field name="delivery_date"/>
-                                    <field name="return_date"/>
-                                </group>
-                            </sheet>
-                        </form>
                     </field>
                 </page>
             </xpath>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_gas_transaction_tree" model="ir.ui.view">
+        <field name="name">gas.transaction.tree</field>
+        <field name="model">gas.transaction</field>
+        <field name="arch" type="xml">
+            <tree string="Gas Transactions">
+                <field name="product_id"/>
+                <field name="customer_id"/>
+                <field name="transaction_date"/>
+                <field name="due_date"/>
+                <field name="default_code"/>
+<!--                <field name="last_refill_date"/>-->
+                <field name="employee_id"/>
+                <field name="transaction_state" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_gas_transaction_form" model="ir.ui.view">
+        <field name="name">gas.transaction.form</field>
+        <field name="model">gas.transaction</field>
+        <field name="arch" type="xml">
+            <form string="Gas Transaction">
+<!--                <header>-->
+<!--                    <button name="return_cylinder" type="object" string="Return Cylinder" class="btn-primary"-->
+<!--                            attrs="{'invisible': [('transaction_state', '!=', 'in_use')]}"/>-->
+<!--                    <button name="refill_cylinder" type="object" string="Refill Cylinder" class="btn-success"-->
+<!--                            attrs="{'invisible': [('transaction_state', '!=', 'empty')]}"/>-->
+<!--                </header>-->
+                <sheet>
+                    <group>
+<!--                        <field name="product_id" domain="[('state', '=', 'available')]" attrs="{'readonly': [('transaction_state', '=', 'done')]}"/>-->
+                        <field name="customer_id" attrs="{'readonly': [('transaction_state', '=', 'done')]}"/>
+                        <field name="transaction_date" attrs="{'readonly': [('transaction_state', '=', 'done')]}"/>
+                        <field name="due_date" attrs="{'readonly': [('transaction_state', '=', 'done')]}"/>
+                        <field name="default_code" attrs="{'readonly': [('transaction_state', '=', 'done')]}"/>
+<!--                        <field name="last_refill_date" attrs="{'readonly': [('transaction_state', '=', 'done')]}"/>-->
+                        <field name="employee_id" attrs="{'readonly': [('transaction_state', '=', 'done')]}"/>
+                        <field name="transaction_state" widget="badge" attrs="{'readonly': [('transaction_state', '=', 'done')]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="gas_transaction_action" model="ir.actions.act_window">
+        <field name="name">Transaction List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">gas.transaction</field>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="search_view_id" ref="view_gas_transaction_search"/>-->
+<!--        <field name="context">{'search_default_late_by_7_days': 1}</field>-->
+
+    </record>
+
+</odoo>
