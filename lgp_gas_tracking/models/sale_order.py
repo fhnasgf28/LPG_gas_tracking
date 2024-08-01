@@ -7,6 +7,7 @@ class SaleOrder(models.Model):
     _description = 'sale order lpg gas refil'
 
     is_lpg = fields.Boolean(string='Is LPG Product', default=False)
+    rfq_created = fields.Boolean(string="RFQ Created", default=False)
     lpg_quantity = fields.Float(string='LPG Quantity (kg)', default=0.0)
     lpg_type = fields.Selection([
         ('lpg3', 'Gas LPG 3 Kg'),
@@ -30,6 +31,33 @@ class SaleOrder(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code(sequence_code) or _('New')
         res = super(SaleOrder, self).create(vals)
         return res
+
+    def action_create_rfq(self):
+        for record in self:
+            if record.rfq_created:
+                raise ValidationError(f'Product {record.name} already been added to RFQ.')
+            sequence_name = self.env['ir.sequence'].next_by_code('gas.request.quotation') or _('New')
+            rfq = self.env['purchase.order'].create({
+                'partner_id': record.partner_id.id,
+                'date_order': fields.Datetime.now(),
+                'name': sequence_name,
+                'is_lpg': True,
+                'order_line': [(0, 0, {
+                    'product_id': line.product_id.id,
+                    'name': line.name,
+                    'product_qty': line.product_uom_qty,
+                    'price_unit': line.price_unit,
+                    'date_planned': fields.Datetime.now()
+                }) for line in record.order_line]
+            })
+            record.rfq_created = True
+            return {
+                'name': 'RFQ Created',
+                'type': 'ir.actions.act_window',
+                'res_model': 'purchase.order',
+                'res_id': rfq.id,
+                'view_mode': 'form',
+            }
 
 
 class SaleOrderLine(models.Model):

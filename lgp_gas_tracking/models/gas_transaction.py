@@ -24,3 +24,26 @@ class GasTransaction(models.Model):
     @api.depends('transaction_date')
     def _compute_due_date(self):
         pass
+
+    @api.depends('product_id')
+    def _compute_profit(self):
+        for record in self:
+            record.profit = record.product_id.list_price if record.transaction_state == 'done' else 0.0
+
+    @api.model
+    def create(self, vals):
+        record = super(GasTransaction, self).create(vals)
+        if record.product_id:
+            record.product_id.write({'state': 'in_use'})
+            record.write({'transaction_state': 'in_use'})
+        return record
+
+    @api.depends('transaction_date')
+    def _compute_due_dat(self):
+        for record in self:
+            if record.transaction_state:
+                transaction_date = fields.Date.from_string(record.transaction_state)
+                due_date = transaction_date + timedelta(days=7)
+                record.due_date = fields.Date.to_string(due_date)
+            else:
+                record.due_date = False

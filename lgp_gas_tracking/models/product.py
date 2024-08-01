@@ -17,6 +17,11 @@ class LpgProduct(models.Model):
     last_refill_date = fields.Date(string='Last Refill Date')
     customer_id = fields.Many2one('res.partner', string='Customer')
     arrival_date = fields.Date(string='Arrival Date')
+    state = fields.Selection([
+        ('available', 'Available'),
+        ('in_use', 'In Use'),
+        ('empty', 'Empty'),
+    ], string='Status', default='available')
     nama_toko = fields.Char(related="customer_id.nama_toko", string='Nama Toko')
     product_config_id = fields.Many2one('gas.lpg.config', string='Product Config Id')
     # stock_available = fields.Selection(related='product_config_id.status', string='Stock Available')

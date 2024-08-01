@@ -18,6 +18,7 @@
                     <group>
                         <field name="last_refill_date"/>
                         <field name="refill_date"/>
+                        <field name="state"/>
                     </group>
                     <group>
                         <field name="arrival_date"/>
